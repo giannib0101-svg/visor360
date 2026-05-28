@@ -331,8 +331,11 @@ function initViewer() {
     rvR.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     rvR.setSize(W, H);
     document.getElementById('vr-right').appendChild(rvR.domElement);
-    camL = new THREE.PerspectiveCamera(90, W / H, 0.1, 1000);
-    camR = new THREE.PerspectiveCamera(90, W / H, 0.1, 1000);
+    const eyeAspect = W / H;
+    camL = new THREE.PerspectiveCamera(80, eyeAspect, 0.1, 1000);
+    camR = new THREE.PerspectiveCamera(80, eyeAspect, 0.1, 1000);
+    camL.updateProjectionMatrix();
+    camR.updateProjectionMatrix();
     gyroOn = true; btnG.classList.add('active');
   }
 
